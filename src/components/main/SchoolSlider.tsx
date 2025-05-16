@@ -36,11 +36,21 @@ const SchoolSlider = () => {
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={20}
-        slidesPerView={5} // 한 번에 보여줄 슬라이드 개수
+        slidesPerView="auto" // 한 번에 보여줄 슬라이드 개수
         centeredSlides
         navigation
         loop={true}
         pagination={pagination}
+        // breakpoints={{
+        //   0: {
+        //     slidesPerView: 1,
+        //     centeredSlides: true,
+        //   },
+        //   768: {
+        //     slidesPerView: 'auto',
+        //     centeredSlides: true,
+        //   },
+        // }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
@@ -51,7 +61,7 @@ const SchoolSlider = () => {
         {schools.map((school, idx) => (
           <SwiperSlide
             key={idx}
-            // className={`transition-transform duration-300 ${active === idx ? 'z-10!' : ''} `}
+            className={`transition-transform duration-300 ${active === idx ? 'w-96!' : 'w-44!'} `}
           >
             <SchoolCard
               name={school.title}

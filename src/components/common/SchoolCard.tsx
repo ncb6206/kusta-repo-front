@@ -14,7 +14,7 @@ const SchoolCard: React.FC<SchoolCardProps> = ({
   onClick,
 }) => (
   <div
-    className={`relative flex items-center gap-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:border! hover:border-blue-400! ${isActive || selected ? 'z-10 h-80 border-2 border-blue-400 px-7 py-10' : 'h-80 p-4'} `}
+    className={`relative flex items-center gap-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:border! hover:border-blue-400! ${isActive || selected ? 'z-10 border-2 border-blue-400 px-7 py-10' : 'p-4'} `}
     onClick={onClick}
   >
     <div className={`flex flex-col items-center ${isActive || selected ? 'w-2/5' : ''}`}>
