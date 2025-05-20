@@ -1,11 +1,19 @@
 // 그래프 영역은 recharts, chart.js 등 라이브러리로 구현
 import { GoChevronUp } from 'react-icons/go';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+} from 'recharts';
 
 const chartData = [
-  { name: '순위 10/100', value: 10, label: '1차' },
-  { name: '순위 5/100', value: 20, label: '2차' },
-  { name: '순위 4/100', value: 30, label: '확정' },
+  { name: '순위10/100', value: 70, label: '1차', time: '1:00:00', rank: '10/100' },
+  { name: '순위5/100', value: 40, label: '2차', time: '1:00:00', rank: '5/100' },
+  { name: '순위4/100', value: 10, label: '합산', time: '1:00:00', rank: '4/100' },
 ];
 
 const ranking = [
@@ -52,19 +60,93 @@ const CompetitionResultCard = () => (
           BIB 250
         </div>
       </div>
-      <div className="bg-gray4 rounded-xl p-4">
-        <ResponsiveContainer width="100%" height={180}>
-          <LineChart data={chartData}>
-            <XAxis dataKey="name" />
-            <YAxis hide />
-            <Tooltip />
-            <Line type="monotone" dataKey="value" stroke="#0473FF" strokeWidth={2} dot={{ r: 4 }} />
-          </LineChart>
-        </ResponsiveContainer>
-        <div className="text-gray1 mt-2 flex justify-between text-xs">
-          {chartData.map((d, i) => (
-            <span key={i}>{d.label}</span>
-          ))}
+      <div className="relative overflow-hidden rounded-xl bg-white">
+        {/* 파란색 그라데이션 배경 */}
+        <div className="relative z-10">
+          <ResponsiveContainer width="100%" height={400}>
+            <LineChart data={chartData} margin={{ top: 20, right: 15, left: 5, bottom: 0 }}>
+              <defs>
+                <linearGradient id="blueGradient" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0%" stopColor="#0473FF" stopOpacity={0.1} />
+                  <stop offset="10%" stopColor="#0473FF" stopOpacity={0.02} />
+                  <stop offset="30%" stopColor="#0473FF" stopOpacity={0} />
+                </linearGradient>
+                <clipPath id="clipAboveLine">
+                  <rect x="0" y="70%" width="97%" height="30%" />
+                </clipPath>
+              </defs>
+              <XAxis
+                dataKey="name"
+                axisLine={false}
+                tickLine={false}
+                tick={false}
+                height={0}
+                padding={{ left: 40, right: 40 }}
+              />
+              <YAxis
+                domain={[0, 80]}
+                reversed
+                axisLine={false}
+                tickLine={false}
+                ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80]}
+                tick={{ fill: '#666', fontSize: 10 }}
+                width={35}
+                tickFormatter={() => '00:01'}
+              />
+              <CartesianGrid vertical={false} horizontal={true} opacity={0.2} />
+              <Tooltip />
+              {/* 파란색 그라데이션 영역 */}
+              <rect
+                x="40"
+                y="0"
+                width="100%"
+                height="100%"
+                fill="url(#blueGradient)"
+                clipPath="url(#clipAboveLine)"
+              />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#0473FF"
+                strokeWidth={1.5}
+                dot={(props) => {
+                  const { cx, cy, index } = props;
+                  const label = chartData[index].label;
+                  return (
+                    <g>
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={4}
+                        fill="white"
+                        stroke="#0473FF"
+                        strokeWidth={1.5}
+                      />
+                      <text
+                        x={cx}
+                        y={cy - 10}
+                        textAnchor="middle"
+                        fill="#0473FF"
+                        fontSize={12}
+                        fontWeight={500}
+                      >
+                        {label}
+                      </text>
+                    </g>
+                  );
+                }}
+                activeDot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+          <div className="mt-4 mr-8 ml-12 flex justify-between text-xs">
+            {chartData.map((d, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <span className="font-medium text-blue-600">순위 {d.rank}</span>
+                <span className="text-gray-800">{d.time}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
