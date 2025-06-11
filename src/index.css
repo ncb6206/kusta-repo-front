@@ -91,6 +91,10 @@ button:focus-visible {
   }
 }
 
+.swiper-wrapper {
+  align-items: center;
+}
+
 .swiper-pagination-bullet {
   background: transparent !important;
   border: 0.1px solid #000 !important;
