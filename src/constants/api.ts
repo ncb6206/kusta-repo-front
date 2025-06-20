@@ -1,3 +1,13 @@
+export const AXIOS_BASE_URL = import.meta.env.VITE_AXIOS_PROD_BASE_URL;
+
+export const END_POINTS = {
+  UNIVERSITY: (id: string) => `/university/${id}`,
+  UNIVERSITY_ALL: '/university/all',
+  UNIVERSITY_MEMBER: '/university/memberlist',
+  MEMBER: (id: string) => `/member/${id}`,
+  MEMBER_SEARCH: (name: string) => `/member/search?name=${name}`,
+};
+
 export const NETWORK = {
   RETRY_COUNT: 2,
   TIMEOUT: 10000,
