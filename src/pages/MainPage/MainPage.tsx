@@ -1,8 +1,11 @@
 import SchoolSlider from '@/components/main/SchoolSlider';
 import SearchBar from '@/components/common/SearchBar';
 import GoKustaLinks from '@/components/main/GoKustaLinks';
+import { useAllUniversityQuery } from '@/hooks/api/useAllUniversityQuery';
 
 const MainPage = () => {
+  const { AllUniversityData } = useAllUniversityQuery();
+
   return (
     <div>
       <div className="relative flex-1 pt-48">
@@ -13,7 +16,7 @@ const MainPage = () => {
             <img src="/logo.svg" alt="한국대학스키연맹" className="h-8" />
             <SearchBar />
           </div>
-          <SchoolSlider />
+          <SchoolSlider universities={AllUniversityData?.data} />
         </div>
       </div>
       <GoKustaLinks />

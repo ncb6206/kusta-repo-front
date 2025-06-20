@@ -11,13 +11,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 
 import SchoolCard from '@/components/common/SchoolCard';
+import { UniversityDataType } from '@/types/university';
 
-const schools = Array.from({ length: 20 }, (_, index) => ({
-  title: `스기대학교 의과대학 스키팀 ${index + 1}`,
-  description: `<b>연혁</b><br/>- 1985년 설립<br/>- 1998년 스키팀 수상<br/>- 2000 스키대회 8위<br/><br/><b>소개</b><br/>스기대학교 의과대학 스키팀은...`,
-}));
+interface UniversitiesType {
+  universities?: UniversityDataType[];
+}
 
-const SchoolSlider = () => {
+const SchoolSlider = ({ universities }: UniversitiesType) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [active, setActive] = useState(0);
 
@@ -31,7 +31,7 @@ const SchoolSlider = () => {
   const handleNavigation = (direction: 'prev' | 'next') => {
     if (!swiperRef.current) return;
 
-    const totalSlides = schools.length;
+    const totalSlides = universities?.length ?? 0;
     let newIndex = active;
 
     if (direction === 'next') {
@@ -69,14 +69,14 @@ const SchoolSlider = () => {
               setActive(swiper.realIndex);
             }}
           >
-            {schools.map((school, idx) => (
+            {universities?.map((school, idx) => (
               <SwiperSlide
                 key={idx}
                 className={`transition-transform duration-300 ${active === idx ? 'w-96!' : 'w-44!'} `}
               >
                 <SchoolCard
-                  name={school.title}
-                  description={school.description}
+                  name={school.universityKor}
+                  description={school.universityInfo}
                   isActive={idx === active}
                   onClick={() => handleClick(idx)}
                 />
