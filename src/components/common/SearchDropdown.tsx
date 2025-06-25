@@ -38,8 +38,10 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({
 
   return (
     <div className="absolute top-full right-0 left-0 z-50 mt-2 flex rounded-lg border border-gray-200 bg-white shadow-lg">
-      <div className="flex flex-col">
-        <div className="border-b bg-gray-50 px-4 py-2 text-xs text-gray-500">즐겨찾기</div>
+      <div className="flex w-full flex-col">
+        <div className="rounded-tl-lg border-b bg-gray-50 px-4 py-2 text-xs text-gray-500">
+          즐겨찾기
+        </div>
         {/* 즐겨찾기 섹션 */}
         {favorites.length > 0 ? (
           <div>
@@ -75,8 +77,10 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({
       </div>
 
       {/* 최근검색 섹션 */}
-      <div className="flex flex-col">
-        <div className="border-b bg-gray-50 px-4 py-2 text-xs text-gray-500">최근검색</div>
+      <div className="flex w-full flex-col">
+        <div className="rounded-tr-lg border-b bg-gray-50 px-4 py-2 text-xs text-gray-500">
+          최근검색
+        </div>
         {recentSearches.length > 0 ? (
           <div>
             <div>
