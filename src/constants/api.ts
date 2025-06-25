@@ -1,4 +1,4 @@
-export const AXIOS_BASE_URL = import.meta.env.VITE_AXIOS_PROD_BASE_URL;
+export const AXIOS_BASE_URL = import.meta.env.VITE_AXIOS_PROD_BASE_URL || 'http://220.76.77.134:8847';
 
 export const END_POINTS = {
   UNIVERSITY: (id: string) => `/university/${id}`,
