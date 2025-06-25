@@ -14,8 +14,17 @@ const SchoolForm = () => {
     website: '',
   });
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('학교 정보 저장:', formData);
     navigate('/admin/school');
   };
 
@@ -38,6 +47,9 @@ const SchoolForm = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">학교명 *</label>
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
                 required
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="학교명을 입력하세요"
@@ -47,6 +59,9 @@ const SchoolForm = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">지역 *</label>
               <input
                 type="text"
+                name="region"
+                value={formData.region}
+                onChange={handleInputChange}
                 required
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="지역을 입력하세요"

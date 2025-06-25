@@ -8,6 +8,9 @@ const SchoolDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  // TODO: 실제 API에서 학교 정보를 가져와야 함
+  console.log('학교 ID:', id);
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
