@@ -63,6 +63,150 @@ const AppRouter = () => {
               <Lazy.AdminPage />
             </Suspense>
           ),
+          children: [
+            // 기본 리다이렉트
+            {
+              index: true,
+              element: (
+                <Suspense>
+                  <Lazy.MemberList />
+                </Suspense>
+              ),
+            },
+            // 회원 관리
+            {
+              path: 'member',
+              element: (
+                <Suspense>
+                  <Lazy.MemberList />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'member/new',
+              element: (
+                <Suspense>
+                  <Lazy.MemberForm />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'member/:id',
+              element: (
+                <Suspense>
+                  <Lazy.MemberDetail />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'member/:id/edit',
+              element: (
+                <Suspense>
+                  <Lazy.MemberForm />
+                </Suspense>
+              ),
+            },
+            // 학교 관리
+            {
+              path: 'school',
+              element: (
+                <Suspense>
+                  <Lazy.SchoolList />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'school/new',
+              element: (
+                <Suspense>
+                  <Lazy.SchoolForm />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'school/:id',
+              element: (
+                <Suspense>
+                  <Lazy.SchoolDetail />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'school/:id/edit',
+              element: (
+                <Suspense>
+                  <Lazy.SchoolForm />
+                </Suspense>
+              ),
+            },
+            // 기록 관리
+            {
+              path: 'record',
+              element: (
+                <Suspense>
+                  <Lazy.RecordList />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'record/new',
+              element: (
+                <Suspense>
+                  <Lazy.RecordForm />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'record/:id',
+              element: (
+                <Suspense>
+                  <Lazy.RecordDetail />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'record/:id/edit',
+              element: (
+                <Suspense>
+                  <Lazy.RecordForm />
+                </Suspense>
+              ),
+            },
+            // 대회 관리
+            {
+              path: 'race',
+              element: (
+                <Suspense>
+                  <Lazy.RaceList />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'race/new',
+              element: (
+                <Suspense>
+                  <Lazy.RaceForm />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'race/:id',
+              element: (
+                <Suspense>
+                  <Lazy.RaceDetail />
+                </Suspense>
+              ),
+            },
+            {
+              path: 'race/:id/edit',
+              element: (
+                <Suspense>
+                  <Lazy.RaceForm />
+                </Suspense>
+              ),
+            },
+          ],
+
         },
       ],
     },
