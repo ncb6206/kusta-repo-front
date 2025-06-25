@@ -1,0 +1,36 @@
+services:
+  # 개발 서버
+  dev:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_AXIOS_PROD_BASE_URL=http://220.76.77:8847
+      - VITE_AXIOS_DEV_BASE_URL=http://220.76.77:8847
+    stdin_open: true
+    tty: true
+    networks:
+      - kusta-network
+
+  # 프로덕션 빌드
+  prod:
+    build:
+      context: .
+      target: prod
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_AXIOS_PROD_BASE_URL=http://220.76.77:8847
+    networks:
+      - kusta-network
+
+networks:
+  kusta-network:
+    driver: bridge 
