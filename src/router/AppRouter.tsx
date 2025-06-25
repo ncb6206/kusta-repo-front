@@ -56,6 +56,14 @@ const AppRouter = () => {
             </Suspense>
           ),
         },
+        {
+          path: PATH.ADMIN,
+          element: (
+            <Suspense>
+              <Lazy.AdminPage />
+            </Suspense>
+          ),
+        },
       ],
     },
   ]);

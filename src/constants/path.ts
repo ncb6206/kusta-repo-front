@@ -4,6 +4,7 @@ export const PATH = {
   INTRODUCE_SCHOOL: '/school',
   ANNOUNCEMENT: '/announcement',
   SCHOOL_DETAIL: (schoolId: string) => `/school/${schoolId}`,
+  ADMIN: '/admin',
   RELOAD: 0,
 } as const;
 

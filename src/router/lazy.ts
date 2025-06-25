@@ -11,3 +11,5 @@ export const IntroduceSchoolPage = lazy(
 export const SchoolDetailPage = lazy(() => import('@/pages/SchoolDetailPage/SchoolDetailPage'));
 
 export const SearchProfilePage = lazy(() => import('@/pages/SearchProfilePage/SearchProfilePage'));
+
+export const AdminPage = lazy(() => import('@/pages/AdminPage/AdminPage'));
