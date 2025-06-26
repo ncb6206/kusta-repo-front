@@ -116,6 +116,7 @@ const memberApi = {
    */
   deleteMember: async (id: string | number): Promise<void> => {
     // TODO: 실제 API 호출 구현
+    console.log('회원 삭제 요청:', id);
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
