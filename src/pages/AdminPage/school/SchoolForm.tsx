@@ -25,8 +25,6 @@ const SchoolForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('학교 정보 저장:', formData);
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     navigate('/admin/school');
   };
 
