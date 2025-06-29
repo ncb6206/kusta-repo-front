@@ -6,6 +6,8 @@ export const END_POINTS = {
   UNIVERSITY_MEMBER: '/university/memberlist',
   MEMBER: (id: string) => `/member/${id}`,
   MEMBER_SEARCH: (name: string) => `/member/search?name=${name}`,
+  RECORD: (id: string) => `/record/${id}`,
+  RACE: (id: string) => `/race/${id}`,
 };
 
 export const NETWORK = {
