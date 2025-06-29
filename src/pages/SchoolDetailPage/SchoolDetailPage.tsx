@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import SchoolLogoCard from '@/components/school/SchoolLogoCard';
 import SchoolTabMenu from '@/components/school/SchoolTabMenu';
 import SchoolInfoCard from '@/components/school/SchoolInfoCard';
 import SchoolMemberGrid from '@/components/school/SchoolMemberGrid';
 import SchoolAwardHistory from '@/components/school/SchoolAwardHistory';
+import { useUniversityQuery } from '@/hooks/api/useUniversityQuery';
 
 const dummyDescription = `○○대학교 스키팀은 겨울 스포츠에 대한 열정으로 모인 학생들이 함께 훈련하고 성장하는 동아리입니다.
 설원 위에서 기술을 연마하며 전국 대회 출전을 목표로 실력을 키워가고 있으며, 초보자부터 상급자까지 모두가 함께 즐기고 도전하는
@@ -34,6 +36,8 @@ const dummyAwards = [
 ];
 
 const SchoolDetailPage = () => {
+  const { schoolId } = useParams();
+  const { UniversityData } = useUniversityQuery(String(schoolId));
   const [tab, setTab] = useState('팀소개');
 
   return (
@@ -41,7 +45,7 @@ const SchoolDetailPage = () => {
       <div className="w-full bg-gradient-to-b from-[#EAF4FF] to-transparent pt-48 text-center">
         <p className="text-2xl font-bold">학교 소개</p>
         <div className="mx-auto flex max-w-5xl flex-col items-center px-4">
-          <SchoolLogoCard teamName="스기 대학교 스키팀" />
+          <SchoolLogoCard teamName={UniversityData?.data.universityKor} />
         </div>
       </div>
       <div className="flex w-full max-w-5xl flex-col items-center px-4">

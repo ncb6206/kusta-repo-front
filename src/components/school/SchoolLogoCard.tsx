@@ -1,6 +1,6 @@
 interface SchoolLogoCardProps {
   logoUrl?: string;
-  teamName: string;
+  teamName?: string;
 }
 
 const SchoolLogoCard: React.FC<SchoolLogoCardProps> = ({ logoUrl, teamName }) => (
