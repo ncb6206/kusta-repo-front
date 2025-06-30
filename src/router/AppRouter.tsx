@@ -25,14 +25,6 @@ const AppRouter = () => {
           ),
         },
         {
-          path: PATH.SEARCH_PROFILE,
-          element: (
-            <Suspense>
-              <Lazy.SearchProfilePage />
-            </Suspense>
-          ),
-        },
-        {
           path: PATH.INTRODUCE_SCHOOL,
           element: (
             <Suspense>
@@ -45,6 +37,14 @@ const AppRouter = () => {
           element: (
             <Suspense>
               <Lazy.AnnouncementPage />
+            </Suspense>
+          ),
+        },
+        {
+          path: PATH.PROFILE,
+          element: (
+            <Suspense>
+              <Lazy.SearchProfilePage />
             </Suspense>
           ),
         },
