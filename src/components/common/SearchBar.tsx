@@ -3,10 +3,14 @@ import { IoSearchOutline } from 'react-icons/io5';
 
 import { useSearchHistory } from '@/hooks/common/useSearchHistory';
 import SearchDropdown from '@/components/common/SearchDropdown';
+import useDebounce from '@/hooks/common/useDebounce';
+import { useMemberSearchQuery } from '@/hooks/api/useMemberSearchQuery';
 
 const SearchBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const debouncedValue = useDebounce(searchTerm);
+  const { MemberSearchData } = useMemberSearchQuery(debouncedValue);
   const searchBarRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -57,6 +61,8 @@ const SearchBar = () => {
           <IoSearchOutline className="text-main cursor-pointer text-2xl" />
         </span>
         <SearchDropdown
+          searchTerm={debouncedValue}
+          MemberSearchData={MemberSearchData}
           isOpen={isDropdownOpen}
           onClose={() => setIsDropdownOpen(false)}
           onSearchSelect={handleSearchSelect}

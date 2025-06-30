@@ -77,6 +77,7 @@ const SchoolSlider = ({ universities }: UniversitiesType) => {
                 <SchoolCard
                   name={school.universityKor}
                   description={school.universityInfo}
+                  universityNo={school.universityNo}
                   isActive={idx === active}
                   onClick={() => handleClick(idx)}
                 />

@@ -6,7 +6,7 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: NETWORK.RETRY_COUNT,
-      gcTime: 0,
+      gcTime: 1000 * 60 * 5,
     },
   },
 });
