@@ -37,7 +37,10 @@ const SearchProfilePage = () => {
           <CompetitionHistoryCard />
         </div>
         <div className="flex flex-1 flex-col gap-6">
-          <CompetitionResultCard />
+          <CompetitionResultCard
+            records={MemberData?.data.records}
+            name={MemberData?.data.memberName}
+          />
         </div>
       </div>
     </div>
