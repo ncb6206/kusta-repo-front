@@ -2,8 +2,12 @@ import React from 'react';
 import { IoStar, IoStarOutline, IoClose } from 'react-icons/io5';
 
 import { SearchItem } from '@/types/search';
+import { SearchMemberData } from '@/types/member';
+import SearchDropdownList from './SearchDropdownList';
 
 interface SearchDropdownProps {
+  searchTerm?: string;
+  MemberSearchData?: SearchMemberData;
   isOpen: boolean;
   onClose: () => void;
   onSearchSelect: (searchText: string) => void;
@@ -16,6 +20,8 @@ interface SearchDropdownProps {
 }
 
 const SearchDropdown: React.FC<SearchDropdownProps> = ({
+  searchTerm,
+  MemberSearchData,
   isOpen,
   onSearchSelect,
   recentSearches,
@@ -35,6 +41,28 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({
   const handleItemClick = (item: SearchItem) => {
     onSearchSelect(item.text);
   };
+
+  if (searchTerm) {
+    return (
+      <div className="absolute top-full right-0 left-0 z-50 mt-2 flex rounded-lg border border-gray-200 bg-white shadow-lg">
+        <div className="mx-6 my-6 flex w-full flex-col gap-4">
+          {MemberSearchData?.data.length !== 0 ? (
+            MemberSearchData?.data.slice(0, 10).map((member) => (
+              <div className="flex items-center gap-4">
+                <SearchDropdownList
+                  name={member.memberName}
+                  classNo={member.memberClass}
+                  universityNo={String(member.universityNo)}
+                />
+              </div>
+            ))
+          ) : (
+            <div className="flex justify-center">해당유저가 존재하지 않습니다!</div>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="absolute top-full right-0 left-0 z-50 mt-2 flex rounded-lg border border-gray-200 bg-white shadow-lg">

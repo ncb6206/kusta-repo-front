@@ -1,6 +1,13 @@
 import { FaStar } from 'react-icons/fa';
 
-const ProfileCard = () => (
+interface ProfileCardProps {
+  name?: string;
+  gender?: string;
+  university?: string;
+  classNo?: string;
+}
+
+const ProfileCard = ({ name, gender, university, classNo }: ProfileCardProps) => (
   <div className="mx-auto w-full max-w-xl rounded-3xl bg-white p-8 shadow-lg">
     {/* 상단: 제목 + 별 */}
     <div className="mb-4 flex items-center justify-between">
@@ -19,14 +26,14 @@ const ProfileCard = () => (
       <div className="flex flex-1 flex-col gap-4">
         <div className="flex items-center gap-2">
           <span className="bg-main/10 text-main rounded-full px-4 py-1 text-sm font-medium">
-            스키대학교 의과대학 25
+            {university} {classNo}
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-2xl font-extrabold text-black">김스키</span>
+          <span className="text-2xl font-extrabold text-black">{name}</span>
           <span className="bg-gray3 inline-block h-8 w-8 rounded-full" />
         </div>
-        <div className="text-gray1 text-base font-medium">성별: 남</div>
+        <div className="text-gray1 text-base font-medium">성별: {gender}</div>
       </div>
     </div>
   </div>

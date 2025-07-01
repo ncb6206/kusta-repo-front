@@ -1,7 +1,13 @@
-export interface UniversityData {
+export interface AllUniversityData {
   success: boolean;
   message: string;
   data: UniversityDataType[];
+}
+
+export interface UniversityData {
+  success: boolean;
+  message: string;
+  data: UniversityDataType;
 }
 
 export interface UniversityDataType {

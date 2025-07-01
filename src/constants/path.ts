@@ -1,8 +1,9 @@
 export const PATH = {
   ROOT: '/',
-  SEARCH_PROFILE: '/profile',
+  PROFILE: '/profile',
   INTRODUCE_SCHOOL: '/school',
   ANNOUNCEMENT: '/announcement',
+  SEARCH_PROFILE: (memberId?: string) => `/profile?memberId=${memberId}`,
   SCHOOL_DETAIL: (schoolId: string) => `/school/${schoolId}`,
   ADMIN: '/admin',
   RELOAD: 0,

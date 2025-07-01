@@ -24,7 +24,10 @@ export const END_POINTS = {
   MEMBER: (id: string) => `/member/${id}`,
   /** 멤버 이름으로 검색 */
   MEMBER_SEARCH: (name: string) => `/member/search?name=${name}`,
-} as const;
+
+  RECORD: (id: string) => `/record/${id}`,
+  RACE: (id: string) => `/race/${id}`,
+};
 
 /**
  * 네트워크 관련 설정값들
