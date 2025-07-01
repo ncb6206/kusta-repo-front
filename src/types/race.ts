@@ -5,7 +5,7 @@ export interface RaceData {
 }
 
 export interface RaceDataType {
-  raceNo: number;
+  raceNo?: number;
   raceTitle: string;
   raceType: string;
   raceDate: string;

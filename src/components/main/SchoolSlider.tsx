@@ -76,6 +76,7 @@ const SchoolSlider = ({ universities }: UniversitiesType) => {
               >
                 <SchoolCard
                   name={school.universityKor}
+                  logo={school.universityLogo}
                   description={school.universityInfo}
                   universityNo={school.universityNo}
                   isActive={idx === active}

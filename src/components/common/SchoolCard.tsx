@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface SchoolCardProps {
   name: string;
+  logo?: string;
   description?: string;
   universityNo?: number;
   isActive?: boolean;
@@ -13,6 +14,7 @@ interface SchoolCardProps {
 const SchoolCard: React.FC<SchoolCardProps> = ({
   name,
   description,
+  logo,
   universityNo,
   isActive,
   selected,
@@ -23,11 +25,13 @@ const SchoolCard: React.FC<SchoolCardProps> = ({
 
   return (
     <div
-      className={`relative flex items-center gap-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:border! hover:border-blue-400! ${isActive || selected ? 'z-10 border-2 border-blue-400 px-7 py-10' : 'p-4'} `}
+      className={`relative flex items-center justify-center gap-4 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:border! hover:border-blue-400! ${isActive || selected ? 'z-10 border-2 border-blue-400 px-7 py-10' : 'p-4'} `}
       onClick={onClick}
     >
       <div className={`flex flex-col items-center ${isActive || selected ? 'w-2/5' : ''}`}>
-        <div className="mb-6 h-28 w-28 rounded-full bg-gray-200" />
+        <div className="relative mb-6 h-28 w-28">
+          <img src={logo} className="h-full w-full" alt="대학교 로고" />
+        </div>
         <div className="text-center font-semibold">{name}</div>
       </div>
       {isActive && (
