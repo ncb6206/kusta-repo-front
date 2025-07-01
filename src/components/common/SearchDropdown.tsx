@@ -47,15 +47,16 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({
       <div className="absolute top-full right-0 left-0 z-50 mt-2 flex rounded-lg border border-gray-200 bg-white shadow-lg">
         <div className="mx-6 my-6 flex w-full flex-col gap-4">
           {MemberSearchData?.data.length !== 0 ? (
-            MemberSearchData?.data.slice(0, 10).map((member) => (
-              <div className="flex items-center gap-4">
+            MemberSearchData?.data
+              .slice(0, 10)
+              .map((member) => (
                 <SearchDropdownList
                   name={member.memberName}
+                  memberNo={String(member.memberNo)}
                   classNo={member.memberClass}
                   universityNo={String(member.universityNo)}
                 />
-              </div>
-            ))
+              ))
           ) : (
             <div className="flex justify-center">해당유저가 존재하지 않습니다!</div>
           )}
