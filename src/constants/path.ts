@@ -5,6 +5,7 @@ export const PATH = {
   ANNOUNCEMENT: '/announcement',
   SEARCH_PROFILE: (memberId?: string) => `/profile?memberId=${memberId}`,
   SCHOOL_DETAIL: (schoolId: string) => `/school/${schoolId}`,
+  ADMIN: '/admin',
   RELOAD: 0,
 } as const;
 
